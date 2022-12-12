@@ -1,21 +1,29 @@
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const MyComponent = ({ name, favoriteNumber, children }) => {
+class MyComponent extends Component {
+  
+  static defaultProps = {
+    name: 'Lee'
+  }
 
-  return <div>
-    <div>My new component, Hello { name }</div>
-    <div>And my children name is { children }</div>
-    <div>My favorite number is { favoriteNumber }</div>
-  </div>
+  static propTypes = {
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired
+  }
+
+  render() {
+    const { name, favoriteNumber, children } = this.props;
+
+    return (
+      <div>
+        <div>My new component, Hello { name }</div>
+        <div>And my children name is { children }</div>
+        <div>My favorite number is { favoriteNumber }</div>
+      </div>
+    );
+  }
 };
 
-MyComponent.defaultProps = {
-  name: 'Lee'
-}
-
-MyComponent.propTypes = {
-  name: PropTypes.string,
-  favoriteNumber: PropTypes.number.isRequired
-}
 
 export default MyComponent;
