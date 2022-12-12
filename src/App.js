@@ -1,7 +1,7 @@
-import MyComponent from './MyComponent';
+import Counter from './Counter';
 
 const App = () => {
-  return <MyComponent name="Kwando" favoriteNumber={26}>Children Name</MyComponent>
+  return <Counter />
 }
 
 export default App;
