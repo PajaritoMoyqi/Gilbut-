@@ -1,17 +1,7 @@
-import Fragment from 'react';
+import MyComponent from './MyComponent';
 
-function App() {
-  const name = 'react'
-  return (
-    <div
-      style = {{
-        backgroundColor: 'black',
-        color: 'aqua'
-      }}
-    > 
-      { name }
-    </div>
-  );
+const App = () => {
+  return <MyComponent />
 }
 
 export default App;
