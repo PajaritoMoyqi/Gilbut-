@@ -2,14 +2,25 @@ import { useState } from 'react';
 
 const EventPractice = () => {
 
-  const [username, setUsername] = useState('');
-  const [message, setMessage] = useState('');
-  const onChangeUsername = e => setUsername(e.target.value);
-  const onChangeMessage = e => setMessage(e.target.value);
+  const [form, setForm] = useState({
+    username: '',
+    message: ''
+  });
+  const { username, message } = form;
+  
+  const onChange = e => {
+    const nextForm = {
+      ...form,
+      [e.target.name]: e.target.value
+    }
+    setForm(nextForm);
+  }
   const onClick = () => {
     alert(username + ': ' + message);
-    setUsername('');
-    setMessage('');
+    setForm({
+      username: '',
+      message: ''
+    })
   }
 
   const handleKeyPress = e => {
@@ -28,7 +39,7 @@ const EventPractice = () => {
         placeholder="your name"
         value={username}
         onChange={
-          onChangeUsername
+          onChange
         }
       />
       <input 
@@ -37,7 +48,7 @@ const EventPractice = () => {
         placeholder="anything you want to write"
         value={message}
         onChange={
-          onChangeMessage
+          onChange
         }
         onKeyPress={
           handleKeyPress
