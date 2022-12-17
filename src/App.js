@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import LifeCycleSample from './LifeCycleSample';
-import ErrorBoundary from './ErrorBoundary';
+import Sample from './Sample';
 
 function getRandomColor() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -21,9 +20,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.handleClick}>Random Color Generator</button>
-        <ErrorBoundary>
-          <LifeCycleSample color={this.state.color} />
-        </ErrorBoundary>
+        <Sample color={this.state.color} idNumber={1}>SAMPLE</Sample>
       </div>
     );
   }
