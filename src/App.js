@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Sample from './Sample';
+import SampleFunctional from './SampleFunctional';
 
 function getRandomColor() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.handleClick}>Random Color Generator</button>
-        <Sample color={this.state.color} idNumber={1}>SAMPLE</Sample>
+        <SampleFunctional color={this.state.color} idNumber={1}>SampleFunctional</SampleFunctional>
       </div>
     );
   }
