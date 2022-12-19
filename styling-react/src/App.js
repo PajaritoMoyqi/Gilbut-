@@ -1,8 +1,8 @@
-import CSSModule from './CSSModule';
+import StyledComponent from './StyledComponent';
 
 const App = () => {
   return (
-    <CSSModule />
+    <StyledComponent />
   );
 }
 
