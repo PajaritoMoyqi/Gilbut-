@@ -10,10 +10,11 @@ class ErrorBoundary extends Component {
       error: true
     });
 
-    console.log('comopnentDidCatch', {error, info});
+    console.log('called: comopnentDidCatch', {error, info});
   }
 
   render() {
+    console.log('called: ErrorBoundary render')
     if(this.state.error) return <div>Error occurred!</div>;
     return this.props.children;
   }
