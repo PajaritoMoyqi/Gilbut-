@@ -26,21 +26,21 @@ function App() {
   const nextId = useRef(2501);
 
   const onInsert = useCallback(text => {
-    setNotTodos([
+    setNotTodos(notTodos => [
       ...notTodos,
       {id: nextId.current, text, checked: false}
     ]);
 
     nextId.current += 1;
-  }, [notTodos]);
+  }, []);
 
   const onRemove = useCallback(id => {
-    setNotTodos(notTodos.filter(notTodo => notTodo.id !== id));
-  }, [notTodos]);
+    setNotTodos(notTodos => notTodos.filter(notTodo => notTodo.id !== id));
+  }, []);
 
   const onToggle = useCallback(id => {
-    setNotTodos(notTodos.map(notTodo => notTodo.id === id ? {...notTodo, checked: !notTodo.checked} : notTodo));
-  }, [notTodos])
+    setNotTodos(notTodos => notTodos.map(notTodo => notTodo.id === id ? {...notTodo, checked: !notTodo.checked} : notTodo));
+  }, [])
 
   return (
     <NotToDoTemplate>
