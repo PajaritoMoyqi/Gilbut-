@@ -1,8 +1,8 @@
-import Info from './Info';
+import Hooks from './Hooks';
 
 const App = () => {
   return (
-    <Info />
+    <Hooks />
   );
 }
 
