@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import NotToDoTemplate from './components/NotToDoTemplate';
+import NotToDoInsert from './components/NotToDoInsert';
 
 function App() {
   return (
-    <NotToDoTemplate>LET'S MAKE NOT-TO-DO APP!</NotToDoTemplate>
+    <NotToDoTemplate>
+      <NotToDoInsert />
+    </NotToDoTemplate>
   );
 }
 
