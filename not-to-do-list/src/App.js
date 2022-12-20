@@ -1,12 +1,11 @@
-import { useState, useRef, useCallback } from 'react';
+import { useReducer, useRef, useCallback } from 'react';
 
 import './App.css';
 import NotToDoTemplate from './components/NotToDoTemplate';
 import NotToDoInsert from './components/NotToDoInsert';
 import NotToDoList from './components/NotToDoList';
-import NotToDoListItem from './components/NotToDoListItem';
 
-const createBulkTodos = () => {
+const createBulkNotTodos = () => {
   const array = [];
 
   for(let i = 1; i<=2500; i++){
@@ -20,27 +19,41 @@ const createBulkTodos = () => {
   return array;
 }
 
-function App() {
-  const [notTodos, setNotTodos] = useState(createBulkTodos);
+const notTodoReducer = (notTodos, action) => {
+  switch(action.type){
+    case 'INSERT':
+      return [
+        ...notTodos,
+        action.notTodo
+      ];
+    case 'REMOVE':
+      return notTodos.filter(notTodo => notTodo.id !== action.id);
+    case 'TOGGLE':
+      return notTodos.map(notTodo => notTodo.id === action.id ? {...notTodo, checked: !notTodo.checked} : notTodo);
+    default:
+      return notTodos;
+  }
+}
 
+const App = () => {
   const nextId = useRef(2501);
 
   const onInsert = useCallback(text => {
-    setNotTodos(notTodos => [
-      ...notTodos,
-      {id: nextId.current, text, checked: false}
-    ]);
+    dispatch({ type: 'INSERT', notTodo: {id: nextId.current, text, checked: false} })
 
     nextId.current += 1;
   }, []);
 
   const onRemove = useCallback(id => {
-    setNotTodos(notTodos => notTodos.filter(notTodo => notTodo.id !== id));
+    dispatch({ type: 'REMOVE', id: id });
   }, []);
 
   const onToggle = useCallback(id => {
-    setNotTodos(notTodos => notTodos.map(notTodo => notTodo.id === id ? {...notTodo, checked: !notTodo.checked} : notTodo));
+    dispatch({ type: 'TOGGLE', id: id })
   }, [])
+
+  const [notTodos, dispatch] = useReducer(notTodoReducer, undefined, createBulkNotTodos);
+
 
   return (
     <NotToDoTemplate>
