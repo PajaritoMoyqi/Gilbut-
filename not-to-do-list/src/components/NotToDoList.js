@@ -1,12 +1,12 @@
 import NotToDoListItem from './NotToDoListItem';
 import './NotToDoList.scss';
 
-const NotToDoList = () => {
+const NotToDoList = ({ notTodos, onRemove, onToggle }) => {
   return (
     <div className="NotToDoList">
-      <NotToDoListItem />
-      <NotToDoListItem />
-      <NotToDoListItem />
+      {notTodos.map(notTodo => {
+        return <NotToDoListItem key={notTodo.id} notTodo={notTodo} onRemove={onRemove} onToggle={onToggle} />;
+      })}
     </div>
   )
 }

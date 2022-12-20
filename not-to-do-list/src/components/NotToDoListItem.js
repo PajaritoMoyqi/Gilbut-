@@ -3,17 +3,19 @@ import {
   MdCheckBox,
   MdRemoveCircleOutline
 } from 'react-icons/md';
+import cn from 'classnames';
 import './NotToDoListItem.scss';
-import NotToDoInsert from './NotToDoInsert';
 
-const NotToDoListItem = () => {
+const NotToDoListItem = ({ notTodo, onRemove, onToggle }) => {
+  const { text, checked, id } = notTodo;
+
   return (
     <div className="NotToDoListItem">
-      <div className="checkbox">
-        <MdCheckBoxOutlineBlank />
-        <div className="text">Not to do</div>
+      <div className={cn('checkbox', { checked })} onClick={() => onToggle(id)} >
+        { checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
+        <div className="text">{ text }</div>
       </div>
-      <div className="remove">
+      <div className="remove" onClick={() => onRemove(id)}>
         <MdRemoveCircleOutline />
       </div>
     </div>
