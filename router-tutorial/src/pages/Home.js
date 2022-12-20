@@ -5,7 +5,12 @@ const Home = () => {
     <div>
       <h1>Home</h1>
       <p>Main page</p>
-      <Link to="/about">About page</Link>
+      <ul>
+        <li><Link to="/about">About page</Link></li>
+        <li><Link to="/profiles/hans">Hans Profile page</Link></li>
+        <li><Link to="/profiles/crazyHorse">crazyHorse Profile page</Link></li>
+        <li><Link to="/profiles/void">not exists user Profile page</Link></li>
+      </ul>
     </div>
   )
 }
