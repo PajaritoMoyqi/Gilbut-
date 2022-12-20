@@ -10,6 +10,7 @@ const Home = () => {
         <li><Link to="/profiles/hans">Hans Profile page</Link></li>
         <li><Link to="/profiles/crazyHorse">crazyHorse Profile page</Link></li>
         <li><Link to="/profiles/void">not exists user Profile page</Link></li>
+        <li><Link to="/articles">Articles List page</Link></li>
       </ul>
     </div>
   )
