@@ -6,13 +6,24 @@ import NotToDoInsert from './components/NotToDoInsert';
 import NotToDoList from './components/NotToDoList';
 import NotToDoListItem from './components/NotToDoListItem';
 
-function App() {
-  const [notTodos, setNotTodos] = useState([
-    {id: 1, text: '하루 목표를 다 하기 전에 다른짓 하지 말자', checked: false},
-    {id: 2, text: '혼밥 할 때 1시간 반 이상 하지 말자', checked: true},
-  ]);
+const createBulkTodos = () => {
+  const array = [];
 
-  const nextId = useRef(3);
+  for(let i = 1; i<=2500; i++){
+    array.push({
+      id: i,
+      text: `${i}번째 할 일`,
+      checked: false
+    });
+  }
+  
+  return array;
+}
+
+function App() {
+  const [notTodos, setNotTodos] = useState(createBulkTodos);
+
+  const nextId = useRef(2501);
 
   const onInsert = useCallback(text => {
     setNotTodos([
