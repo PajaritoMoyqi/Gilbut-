@@ -16,7 +16,7 @@ const NewsListBlock = styled.div`
   }
 `;
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +25,8 @@ const NewsList = () => {
       setLoading(true);
 
       try {
-        const response = await axios.get(`https://newsapi.org/v2/top-headlines?language=es&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`);
+        const query = category === 'all' ? '' : `&category=${category}`;
+        const response = await axios.get(`https://newsapi.org/v2/top-headlines?language=es${query}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`);
         setArticles(response.data.articles);
       } catch (e) {
         console.log(e);
@@ -35,7 +36,7 @@ const NewsList = () => {
     }
 
     fetchData();
-  }, []);
+  }, [category]);
 
   if(loading){
     return <NewsListBlock>News Loading...</NewsListBlock>
@@ -43,8 +44,6 @@ const NewsList = () => {
   if(!articles){
     return null;
   }
-
-  console.log(articles);
 
   return (
     <NewsListBlock>
