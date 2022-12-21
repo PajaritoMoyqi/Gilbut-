@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { ColorConsumer } from '../contexts/color';
 
 const ColorBox = () => {
