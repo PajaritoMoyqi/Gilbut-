@@ -1,23 +1,21 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Profile from './pages/Profile';
-import Articles from './pages/Articles';
-import Article from './pages/Article';
-import Layout from './pages/Layout';
-import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import MyPage from './pages/MyPage';
+import Main from './sample/Main';
+import Ad from './sample/Ad';
+import Contact from './sample/Contact';
+import ArticlesList from './sample/ArticlesList';
+import Article from './sample/Article';
+import Login from './sample/Login';
+import MyPage from './sample/MyPage';
+import NotFound from './sample/NotFound';
 
 const App = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/profiles/:username" element={<Profile />} />
+      <Route element={<Ad />}>
+        <Route index element={<Main />} />
+        <Route path="/contact" element={<Contact />} />
       </Route>
-      <Route path="/articles" element={<Articles />}>
+      <Route path="/articles" element={<ArticlesList />}>
         <Route path=":id" element={<Article />} />
       </Route>
       <Route path="/login" element={<Login />} />
