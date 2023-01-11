@@ -1,15 +1,15 @@
-import ColorBox from './components/ColorBox';
-import { ColorProvider } from './contexts/color';
-import SelectColors from './components/SelectColors';
+import { MyProvider } from './context';
+import Child from './Child';
+import Child2 from './Child2';
 
 const App = () => {
   return (
-    <ColorProvider>
+    <MyProvider>
       <div>
-        <SelectColors />
-        <ColorBox />
+        <Child />
+        <Child2 />
       </div>
-    </ColorProvider>
+    </MyProvider>
   );
 }
 
