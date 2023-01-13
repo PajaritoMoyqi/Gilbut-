@@ -1,12 +1,9 @@
-import CounterContainer from './containers/CounterContainer';
-import TodosContainer from './containers/TodosContainer';
+import ListContainer from './containers/ListContainer';
 
 const App = () => {
   return (
     <div>
-      <CounterContainer />
-      <hr />
-      <TodosContainer />
+      <ListContainer />
     </div>
   );
 }
